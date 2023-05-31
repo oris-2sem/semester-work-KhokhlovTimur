@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Friends</title>
+    <link rel="stylesheet" href="/css/template.css">
+    <link rel="stylesheet" href="/css/friends.css">
+</head>
+<body>
+
+
+<div class="main-container collapse">
+    <nav th:replace="template :: mainNavbar"></nav>
+    <div th:replace="template :: header"></div>
+
+    <div class="body moved">
+
+        <span class="heading header-title">friends</span>
+        <input type="checkbox" id="cbx" style="display:none"/>
+        <label for="cbx" class="toggle"><span></span>
+        </label>
+        <span class="global-search">global</span>
+
+        <div class="requests">
+            <span class="requests-heading">Requests</span>
+            <button class="request-button incoming">Incoming</button>
+            <button class="request-button outgoing">Outgoing</button>
+        </div>
+
+        <div class="search moved-search">
+
+            <div class="text_and-icon">
+                <input type="text" class="search_text" id="search_text" placeholder="Search..." autocomplete="off">
+            </div>
+        </div>
+
+        <div class="friends">
+
+            <div class="friend-card" th:each="friend: ${friends}">
+                <img class="round" th:src="${friend.avatarLink}" alt="user"/>
+                <h3>
+                    <span class="friend-name" th:text="${friend.name + ' ' + friend.surname}"></span>
+                </h3>
+                <h6 class="friend-username" th:text="${'@' + friend.username}"></h6>
+                <div class="buttons">
+                    <button class="primary friend-message">
+                        Chat
+                    </button>
+                    <button class="primary ghost friend-add" disabled>
+                        Added
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<script th:replace="scripts-import.html"></script>
+<script th:src="@{/js/friends.js}"></script>
+</body>
+</html>

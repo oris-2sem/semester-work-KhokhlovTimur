@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="/css/authentication.css">
+    <link rel="stylesheet" href="/css/template.css">
+</head>
+<body>
+
+<div class="main-container collapse">
+    <div th:replace="template :: header"></div>
+
+    <div class="body flex-body">
+
+        <form class="signUp">
+            <h3>Create Account</h3>
+            <input  id="name" placeholder="Name" required autocomplete="off"/>
+            <input  id="surname" placeholder="Surname" required autocomplete="off"/>
+            <input  id="age" placeholder="Age" required autocomplete="off"/>
+            <input name="loginReg" id="username-registration" placeholder="Username" required
+                   autocomplete="off"/>
+            <input name="passwordReg" type="password" placeholder="Insert Password" id="password" autocomplete="off"
+                   required/>
+            <input type="password" name="passwordReg2" placeholder="Verify Password" id="password-verify"
+                   autocomplete="off"
+                   required/>
+
+            <input id="Male" class="toggle toggle-left" name="toggle" value="false" type="radio" checked>
+            <label for="Male" class="btn">Male</label>
+            <input id="Female" class="toggle toggle-right" name="toggle" value="true" type="radio">
+            <label for="Female" class="btn">Female</label>
+
+            <button class="form-btn sx log-in" type="button">Log In</button>
+            <button class="form-btn dx register-submit" type="submit" name="button" value="reg" id="reg">Sign Up
+            </button>
+            <ul class="err-message registration-err">
+            </ul>
+        </form>
+
+        <form class="signIn">
+            <h3>Welcome</br>Back !</h3>
+            <p>- log in -</p>
+            <input name="loginLog" id="username-login" class="backform" placeholder="Username" autocomplete="off"/>
+            <input name="passwordLog" type="password" id="login-password" placeholder="Insert Password"
+                   autocomplete="off"/>
+            <button class="form-btn sx back" type="button" disabled>Back</button>
+            <button class="form-btn dx login-submit" type="submit" name="button" value="log" disabled>Log In</button>
+            <ul class="err-message login-err">
+            </ul>
+        </form>
+
+
+    </div>
+
+</div>
+
+<script th:replace="scripts-import.html"></script>
+<script th:src="@{/js/authentication.js}"></script>
+
+</body>
+</html>
